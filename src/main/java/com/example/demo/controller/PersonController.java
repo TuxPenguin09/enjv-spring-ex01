@@ -3,14 +3,13 @@ package com.example.demo.controller;
 
 import com.example.demo.configuration.DatabaseConfig;
 import com.example.demo.entity.PersonEntity;
-import com.example.demo.model.Person;
+import com.example.demo.request.PersonRequest;
 import com.example.demo.repository.PersonRepository;
+import com.example.demo.request.UserInputRequest;
 import com.example.demo.response.APIResponse;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -63,7 +62,7 @@ public class PersonController {
     }
 
     @PutMapping("details/{id}")
-    public ResponseEntity<?> updatePerson(@PathVariable Long id, @RequestBody Person person) {
+    public ResponseEntity<?> updatePerson(@PathVariable Long id, @RequestBody PersonRequest person) {
         Optional<PersonEntity> optionalPerson = personRepository.findById(id);
 
         if(optionalPerson.isPresent()) {
