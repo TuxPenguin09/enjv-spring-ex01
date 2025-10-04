@@ -1,7 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Category;
 import com.example.demo.entity.PersonEntity;
+import com.example.demo.entity.Pokemon;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.PersonRepository;
+import com.example.demo.repository.PokemonRepository;
 import com.example.demo.request.UserInputRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +22,12 @@ public class DashboardController {
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    PokemonRepository pokemonRepository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @GetMapping("/dashboard")
     public String home(Model model){
@@ -43,6 +53,20 @@ public class DashboardController {
         personRepository.save(personEntity);
         redirectAttributes.addAttribute("successMessage", "Person saved successfully!");
         return "redirect:/person/create";
+    }
+
+    @GetMapping("/pokemon")
+    public String pokemon(Model model) {
+        List<Pokemon> listPokemon = pokemonRepository.findAll();
+
+        List<Category> categories = categoryRepository.findAll();
+        model.addAttribute("pokemonList", listPokemon);
+
+        model.addAttribute("categories", categories);
+
+
+
+        return "pokemon/list";
     }
 
 }
