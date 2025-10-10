@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 @Entity
 public class Pokemon {
 

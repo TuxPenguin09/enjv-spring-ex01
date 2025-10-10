@@ -69,4 +69,22 @@ public class DashboardController {
         return "pokemon/list";
     }
 
+    @GetMapping("/pokemon/add")
+    public String createPokemon(Model model){
+        model.addAttribute("pokemon", new Pokemon());
+        model.addAttribute("categories", categoryRepository.findAll());
+        return "pokemon/create";
+    }
+
+    @PostMapping("/pokemon/add")
+    public String postPokemon(@ModelAttribute Pokemon pokemon, Model model){
+
+        pokemonRepository.save(pokemon);
+
+
+
+
+        return "pokemon/create";
+    }
+
 }
