@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface PokemonRepository extends JpaRepository<Pokemon, Long> {
 
-//    @EntityGraph(attributePaths = {"category"})
-//    @Override
-//    List<Pokemon> findAll();
+    @EntityGraph(attributePaths = {"category"})
+    @Override
+    List<Pokemon> findAll();
 
     List<Pokemon> findByNameContainingIgnoreCase(String keyword);
 

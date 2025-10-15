@@ -43,7 +43,8 @@ public class PokemonController {
     @GetMapping("/pokemon/add")
     public String addPokemon(Model model){
         model.addAttribute("pokemon", new Pokemon());
-//        model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("categories", categoryRepository.findAll());
+
         return "pokemonV2/create";
     }
 
