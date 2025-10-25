@@ -26,5 +26,10 @@ public class PokemonRestAPIService {
 
     }
 
+    public boolean deletePokemonByID(Long id) {
+        pokemonRepository.deleteById(id);
+        return true;
+    }
+
 
 }

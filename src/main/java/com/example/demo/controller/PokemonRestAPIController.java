@@ -4,6 +4,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.Pokemon;
 import com.example.demo.response.APIResponse;
 import com.example.demo.service.PokemonRestAPIService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,6 +49,13 @@ public class PokemonRestAPIController {
         return ResponseEntity.ok("sfsdf");
     }
 
-
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deletePokemon(@PathVariable Long id) {
+        if (pokemonRestAPIService.deletePokemonByID(id)) {
+            return ResponseEntity.ok("deleted ID: " + id);
+        } else {
+            return ResponseEntity.ok("");
+        }
+    }
 
 }
