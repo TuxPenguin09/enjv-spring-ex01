@@ -54,7 +54,7 @@ public class PokemonController {
         return "redirect:/v2/pokemon/list";
     }
 
-    @GetMapping("/pokemon/delete/{id}")    // although this should @DeleteMapping the FE is searching for GET
+    @DeleteMapping("/pokemon/delete/{id}")
     public String deletePokemon(@PathVariable Long id){
         pokemonRepository.deleteById(id);
         return "redirect:/v2/pokemon/list";

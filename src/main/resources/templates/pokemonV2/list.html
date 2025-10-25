@@ -34,7 +34,7 @@
 
             <div class="mt-2">
                 <a th:href="@{'/v2/pokemon/edit/' + ${pokemon.id}}" class="btn btn-info btn-sm">Edit</a>
-                <a th:href="@{'/v2/pokemon/delete/' + ${pokemon.id}}" class="btn btn-danger btn-sm">Delete</a>
+                <a href="#" th:attr="data-id=${pokemon.id}" class="btn btn-danger btn-sm" onclick="deletePokemon(this)">Delete</a>
             </div>
         </div>
     </div>
@@ -57,5 +57,18 @@
 
 
 </tbody>
+
+
+<script>
+    function deletePokemon(el) {
+      const id = el.getAttribute('data-id');
+      if (confirm('Are you sure?')) {
+        fetch(`/v2/pokemon/delete/${id}`, { method: 'DELETE' })
+          .then(response => {
+            if (response.ok) location.reload();
+          });
+      }
+    }
+</script>
 </body>
 </html>
