@@ -13,6 +13,8 @@ public interface PokemonRepository extends JpaRepository<Pokemon, Long> {
     @Override
     List<Pokemon> findAll();
 
+    Pokemon findByName(String name);
+
     List<Pokemon> findByNameContainingIgnoreCase(String keyword);
 
 

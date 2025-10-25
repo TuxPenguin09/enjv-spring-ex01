@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 
+// N+1
+
+
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Pokemon;
 import com.example.demo.repository.CategoryRepository;
